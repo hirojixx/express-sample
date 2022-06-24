@@ -1,9 +1,9 @@
 import { Controller, Get } from 'routing-controllers';
 
 @Controller()
-export class IndexController {
+export class HealthCheckController {
   @Get('/')
-  index() {
+  healthCheck() {
     return 'OK';
   }
 }
