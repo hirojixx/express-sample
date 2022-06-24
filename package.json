@@ -1,5 +1,5 @@
 {
-  "name": "expressCheck",
+  "name": "express-sample",
   "version": "0.0.0",
   "description": "TypeScript + Routing Controllers + Express API Server",
   "author": "",
@@ -9,7 +9,8 @@
     "build": "swc src -d dist --source-maps --copy-files",
     "build:tsc": "tsc && tsc-alias",
     "lint": "eslint --ignore-path .gitignore --ext .ts src/",
-    "lint:fix": "npm run lint -- --fix"
+    "lint:fix": "npm run lint -- --fix",
+    "format": "prettier --write \"**/*.+(js|json|yml|ts|tsx)\""
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
@@ -50,10 +51,9 @@
     "eslint": "^7.30.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
-    "node-config": "^0.0.2",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-unused-imports": "^2.0.0",
     "node-gyp": "^8.1.0",
-    "nodemon": "^2.0.9",
-    "pm2": "^5.1.0",
     "prettier": "^2.3.2",
     "ts-jest": "^27.1.4",
     "ts-node": "^10.4.0",
