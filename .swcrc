@@ -23,7 +23,7 @@
       "@/*": ["*"],
       "@config": ["config"],
       "@controllers/*": ["controllers/*"],
-      "@dtos/*": ["dtos/*"],
+      "@viewmodels/*": ["viewmodels/*"],
       "@exceptions/*": ["exceptions/*"],
       "@interfaces/*": ["interfaces/*"],
       "@middlewares/*": ["middlewares/*"],
