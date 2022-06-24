@@ -1,8 +1,9 @@
 import { existsSync, mkdirSync } from 'fs';
 import { join } from 'path';
+
+import { LOG_DIR } from '@config';
 import winston from 'winston';
 import winstonDaily from 'winston-daily-rotate-file';
-import { LOG_DIR } from '@config';
 
 // logs dir
 const logDir: string = join(__dirname, LOG_DIR);
@@ -23,7 +24,7 @@ const logger = winston.createLogger({
     winston.format.timestamp({
       format: 'YYYY-MM-DD HH:mm:ss',
     }),
-    logFormat,
+    logFormat
   ),
   transports: [
     // debug log setting
@@ -53,7 +54,7 @@ const logger = winston.createLogger({
 logger.add(
   new winston.transports.Console({
     format: winston.format.combine(winston.format.splat(), winston.format.colorize()),
-  }),
+  })
 );
 
 const stream = {

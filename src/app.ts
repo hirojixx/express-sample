@@ -1,5 +1,7 @@
 import 'reflect-metadata';
-import { defaultMetadataStorage } from 'class-transformer';
+import { NODE_ENV, PORT, LOG_FORMAT, ORIGIN, CREDENTIALS } from '@config';
+import errorMiddleware from '@middlewares/error.middleware';
+import { logger, stream } from '@utils/logger';
 import { validationMetadatasToSchemas } from 'class-validator-jsonschema';
 import compression from 'compression';
 import cookieParser from 'cookie-parser';
@@ -10,9 +12,6 @@ import morgan from 'morgan';
 import { useExpressServer, getMetadataArgsStorage } from 'routing-controllers';
 import { routingControllersToSpec } from 'routing-controllers-openapi';
 import swaggerUi from 'swagger-ui-express';
-import { NODE_ENV, PORT, LOG_FORMAT, ORIGIN, CREDENTIALS } from '@config';
-import errorMiddleware from '@middlewares/error.middleware';
-import { logger, stream } from '@utils/logger';
 
 class App {
   public app: express.Application;
@@ -66,7 +65,6 @@ class App {
 
   private initializeSwagger(controllers: Function[]) {
     const schemas = validationMetadatasToSchemas({
-      classTransformerMetadataStorage: defaultMetadataStorage,
       refPointerPrefix: '#/components/schemas/',
     });
 

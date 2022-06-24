@@ -1,5 +1,3 @@
-import { compare, hash } from 'bcrypt';
-import { sign } from 'jsonwebtoken';
 import { SECRET_KEY } from '@config';
 import { CreateUserDto } from '@dtos/users.dto';
 import { HttpException } from '@exceptions/HttpException';
@@ -7,6 +5,8 @@ import { DataStoredInToken, TokenData } from '@interfaces/auth.interface';
 import { User } from '@interfaces/users.interface';
 import userModel from '@models/users.model';
 import { isEmpty } from '@utils/util';
+import { compare, hash } from 'bcrypt';
+import { sign } from 'jsonwebtoken';
 
 class AuthService {
   public users = userModel;
@@ -14,7 +14,7 @@ class AuthService {
   public async signup(userData: CreateUserDto): Promise<User> {
     if (isEmpty(userData)) throw new HttpException(400, "You're not userData");
 
-    const findUser: User = this.users.find(user => user.email === userData.email);
+    const findUser: User | undefined = this.users.find(user => user.email === userData.email);
     if (findUser) throw new HttpException(409, `You're email ${userData.email} already exists`);
 
     const hashedPassword = await hash(userData.password, 10);
@@ -26,7 +26,7 @@ class AuthService {
   public async login(userData: CreateUserDto): Promise<{ cookie: string; findUser: User }> {
     if (isEmpty(userData)) throw new HttpException(400, "You're not userData");
 
-    const findUser: User = this.users.find(user => user.email === userData.email);
+    const findUser: User | undefined = this.users.find(user => user.email === userData.email);
     if (!findUser) throw new HttpException(409, `You're email ${userData.email} not found`);
 
     const isPasswordMatching: boolean = await compare(userData.password, findUser.password);
@@ -41,7 +41,9 @@ class AuthService {
   public async logout(userData: User): Promise<User> {
     if (isEmpty(userData)) throw new HttpException(400, "You're not userData");
 
-    const findUser: User = this.users.find(user => user.email === userData.email && user.password === userData.password);
+    const findUser: User | undefined = this.users.find(
+      user => user.email === userData.email && user.password === userData.password
+    );
     if (!findUser) throw new HttpException(409, "You're not user");
 
     return findUser;
