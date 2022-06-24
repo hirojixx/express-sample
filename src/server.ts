@@ -1,4 +1,4 @@
-import { HealthCheckController } from '@/controllers/HealthCheck.controller';
+import { HealthCheckController } from '@/controllers/healthCheck.controller';
 import { UsersController } from '@controllers/users.controller';
 
 import App from '@/app';
