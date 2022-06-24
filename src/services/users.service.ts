@@ -1,9 +1,10 @@
-import { CreateUserDto } from '@dtos/users.dto';
 import { HttpException } from '@exceptions/HttpException';
 import { User } from '@interfaces/users.interface';
 import userModel from '@models/users.model';
 import { isEmpty } from '@utils/util';
 import { hash } from 'bcrypt';
+
+import { CreateUser } from '@/viewmodels/users.viewmodel';
 
 class UserService {
   public users = userModel;
@@ -20,7 +21,7 @@ class UserService {
     return findUser;
   }
 
-  public async createUser(userData: CreateUserDto): Promise<User> {
+  public async createUser(userData: CreateUser): Promise<User> {
     if (isEmpty(userData)) throw new HttpException(400, "You're not userData");
 
     const findUser: User | undefined = this.users.find(user => user.email === userData.email);
@@ -33,7 +34,7 @@ class UserService {
     return createUserData;
   }
 
-  public async updateUser(userId: number, userData: CreateUserDto): Promise<User[]> {
+  public async updateUser(userId: number, userData: CreateUser): Promise<User[]> {
     if (isEmpty(userData)) throw new HttpException(400, "You're not userData");
 
     const findUser: User | undefined = this.users.find(user => user.id === userId);

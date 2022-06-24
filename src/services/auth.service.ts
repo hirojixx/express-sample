@@ -1,5 +1,4 @@
 import { SECRET_KEY } from '@config';
-import { CreateUserDto } from '@dtos/users.dto';
 import { HttpException } from '@exceptions/HttpException';
 import { DataStoredInToken, TokenData } from '@interfaces/auth.interface';
 import { User } from '@interfaces/users.interface';
@@ -8,10 +7,12 @@ import { isEmpty } from '@utils/util';
 import { compare, hash } from 'bcrypt';
 import { sign } from 'jsonwebtoken';
 
+import { CreateUser } from '@/viewmodels/users.viewmodel';
+
 class AuthService {
   public users = userModel;
 
-  public async signup(userData: CreateUserDto): Promise<User> {
+  public async signup(userData: CreateUser): Promise<User> {
     if (isEmpty(userData)) throw new HttpException(400, "You're not userData");
 
     const findUser: User | undefined = this.users.find(user => user.email === userData.email);
@@ -23,7 +24,7 @@ class AuthService {
     return createUserData;
   }
 
-  public async login(userData: CreateUserDto): Promise<{ cookie: string; findUser: User }> {
+  public async login(userData: CreateUser): Promise<{ cookie: string; findUser: User }> {
     if (isEmpty(userData)) throw new HttpException(400, "You're not userData");
 
     const findUser: User | undefined = this.users.find(user => user.email === userData.email);
