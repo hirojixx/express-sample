@@ -5,7 +5,7 @@ import userModel from '@models/users.model';
 import { NextFunction, Response } from 'express';
 import { verify } from 'jsonwebtoken';
 
-const authMiddleware = async (req: RequestWithUser, res: Response, next: NextFunction) => {
+const authMiddleware = async (req: RequestWithUser, _res: Response, next: NextFunction) => {
   try {
     const Authorization =
       req.cookies['Authorization'] ||

@@ -17,7 +17,7 @@ export const validationMiddleware = (
   whitelist = true,
   forbidNonWhitelisted = true
 ): RequestHandler => {
-  return (req, res, next) => {
+  return (req, _res, next) => {
     const obj = plainToInstance(type, req[value]);
     validate(obj, { skipMissingProperties, whitelist, forbidNonWhitelisted }).then((errors: ValidationError[]) => {
       if (errors.length > 0) {
