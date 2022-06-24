@@ -1,10 +1,10 @@
-import { HttpException } from '@exceptions/HttpException';
 import { User } from '@interfaces/users.interface';
 import userModel from '@models/users.model';
+import { HttpException } from '@utils/HttpException';
 import { isEmpty } from '@utils/util';
+import { CreateUser } from '@viewmodels/users.viewmodel';
 import { hash } from 'bcrypt';
 
-import { CreateUser } from '@/viewmodels/users.viewmodel';
 
 class UserService {
   public users = userModel;

@@ -1,8 +1,8 @@
 import { User } from '@interfaces/users.interface';
 import userService from '@services/users.service';
+import { CreateUser } from '@viewmodels/users.viewmodel';
 import { Controller, Param, Body, Get, Post, Put, Delete, HttpCode } from 'routing-controllers';
 
-import { CreateUser } from '@/viewmodels/users.viewmodel';
 
 @Controller()
 export class UsersController {
