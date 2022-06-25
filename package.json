@@ -6,6 +6,7 @@
   "license": "ISC",
   "scripts": {
     "start": "npm run build && node dist/server.js",
+    "start:dev": "nodemon",
     "build": "swc src -d dist --source-maps --copy-files",
     "build:tsc": "tsc && tsc-alias",
     "lint": "eslint --ignore-path .gitignore --ext .ts src/",
