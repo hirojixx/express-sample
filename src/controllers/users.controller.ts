@@ -42,7 +42,7 @@ export class UsersController {
     if (findUser) throw new HttpException(409, `Your email ${userData.email} already exists`);
 
     const hashedPassword = await hash(userData.password, 10);
-    const saveData = { name: 'test', email: userData.email, password: hashedPassword };
+    const saveData = { name: userData.name, email: userData.email, password: hashedPassword };
     const saved = await this.user.create({
       data: saveData,
     });
@@ -63,7 +63,9 @@ export class UsersController {
 
     const hashedPassword = await hash(userData.password, 10);
     const user: User = {
-      ...findUser,
+      user_id: findUser.user_id,
+      name: userData.name,
+      email: userData.email,
       password: hashedPassword,
     };
 
@@ -85,6 +87,7 @@ export class UsersController {
         user_id: userId,
       },
     });
+
     if (!findUser) throw new HttpException(409, "You're not user");
 
     const deleteUserData: User = await this.user.delete({
