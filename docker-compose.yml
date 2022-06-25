@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: sql-server-2019-express
+    volumes:
+      - ./DB/DATA:/var/opt/mssql/data
+      - ./DB/LOG:/var/opt/mssql/log
+      - ./DB/secrets:/var/opt/mssql/sec
+    ports:
+      - 1433:1433
+    environment:
+      - ACCEPT_EULA=Y
+    env_file:
+      - sql-server-2019.env
+
+volumes:
+  db-data:

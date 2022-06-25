@@ -1,8 +1,7 @@
-import { User } from '@interfaces/users.interface';
+import { User } from '@prisma/client';
 import userService from '@services/users.service';
 import { CreateUser } from '@viewmodels/users.viewmodel';
 import { Controller, Param, Body, Get, Post, Put, Delete, HttpCode } from 'routing-controllers';
-
 
 @Controller()
 export class UsersController {
@@ -16,7 +15,7 @@ export class UsersController {
 
   @Get('/users/:id')
   async getUserById(@Param('id') userId: number) {
-    const findOneUserData: User = await this.userService.findUserById(userId);
+    const findOneUserData: User = await this.userService.findUserById(Number(userId));
     return { data: findOneUserData, message: 'findOne' };
   }
 
@@ -35,7 +34,7 @@ export class UsersController {
 
   @Delete('/users/:id')
   async deleteUser(@Param('id') userId: number) {
-    const deleteUserData: User[] = await this.userService.deleteUser(userId);
+    const deleteUserData: User = await this.userService.deleteUser(userId);
     return { data: deleteUserData, message: 'deleted' };
   }
 }

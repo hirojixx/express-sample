@@ -7,5 +7,5 @@ try {
   const app = new App([HealthCheckController, UsersController]);
   app.listen();
 } catch (error) {
-  console.log(error)
+  console.log(error);
 }

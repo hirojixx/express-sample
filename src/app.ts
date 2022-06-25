@@ -1,6 +1,5 @@
 import 'reflect-metadata';
 import { NODE_ENV, PORT, LOG_FORMAT, ORIGIN, CREDENTIALS } from '@config';
-import errorMiddleware from '@middlewares/error.middleware';
 import { logger, stream } from '@utils/logger';
 import compression from 'compression';
 import cookieParser from 'cookie-parser';
@@ -9,6 +8,8 @@ import helmet from 'helmet';
 import hpp from 'hpp';
 import morgan from 'morgan';
 import { useExpressServer } from 'routing-controllers';
+
+import errorMiddleware from '@/utils/error.middleware';
 
 class App {
   public app: express.Application;
