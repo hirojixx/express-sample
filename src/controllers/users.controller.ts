@@ -1,7 +1,8 @@
 import { User } from '@prisma/client';
-import userService from '@services/users.service';
-import { CreateUser } from '@viewmodels/users.viewmodel';
 import { Controller, Param, Body, Get, Post, Put, Delete, HttpCode } from 'routing-controllers';
+
+import userService from '../services/users.service';
+import { CreateUser } from '../viewmodels/users.viewmodel';
 
 @Controller()
 export class UsersController {

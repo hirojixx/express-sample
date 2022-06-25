@@ -1,8 +1,9 @@
 import { PrismaClient, User } from '@prisma/client';
-import { HttpException } from '@utils/HttpException';
-import { isEmpty } from '@utils/util';
-import { CreateUser } from '@viewmodels/users.viewmodel';
 import { hash } from 'bcrypt';
+
+import { HttpException } from '../utils/HttpException';
+import { isEmpty } from '../utils/util';
+import { CreateUser } from '../viewmodels/users.viewmodel';
 
 class UserService {
   private user = new PrismaClient().user;
@@ -57,12 +58,14 @@ class UserService {
       ...findUser,
       password: hashedPassword,
     };
-    const updateUserData: User = await this.user.update({
+
+    await this.user.update({
       where: {
         user_id: user.user_id,
       },
       data: user,
     });
+
     const updates = await this.user.findMany();
 
     return updates;

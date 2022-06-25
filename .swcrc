@@ -19,18 +19,6 @@
       "mangle": false
     },
     "baseUrl": "src",
-    "paths": {
-      "@/*": ["*"],
-      "@config": ["config"],
-      "@controllers/*": ["controllers/*"],
-      "@viewmodels/*": ["viewmodels/*"],
-      "@exceptions/*": ["exceptions/*"],
-      "@interfaces/*": ["interfaces/*"],
-      "@middlewares/*": ["middlewares/*"],
-      "@models/*": ["models/*"],
-      "@services/*": ["services/*"],
-      "@utils/*": ["utils/*"]
-    }
   },
   "module": {
     "type": "commonjs"
