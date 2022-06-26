@@ -14,7 +14,12 @@ if (!existsSync(logDir)) {
 }
 
 // Define log format
-const logFormat = winston.format.printf(({ timestamp, level, message }) => `${timestamp} ${level}: ${message}`);
+const logFormat = winston.format.printf(({ timestamp, level, message }) => {
+  if(level === "error"){
+    return `\x1b[31m${timestamp} ${level}: ${message}\x1b[0m`
+  }
+  return `${timestamp} ${level}: ${message}`
+});
 
 /*
  * Log Level
