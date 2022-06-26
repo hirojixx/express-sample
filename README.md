@@ -1,6 +1,14 @@
 # express-sample
 
 インターンシップ用サンプル
+
+必要と思われるVSCodeの拡張機能は拡張機能タブのワークスペースの推奨からインストール可能
+以下のものを設定している
+
+- vscode-eslint(TypeScriptのリンター)
+- rest-client(HTTPリクエストを送れるようにする拡張機能)
+- prisma(prismaのDB用スキーマ言語の拡張機能)
+
 現状DBはSQL Serverとしているが、以下のDBに対応している
 - SQLite
 - MySQL
@@ -33,6 +41,14 @@
 3. DBを確認する
 `npm run prisma:studio`
 ブラウザが立ち上がり、DBの状態確認と更新を行うことができる
+
+- APIの実行確認
+
+VScodeの拡張機能を利用してHTTPリクエストを投げる
+サンプルではusers.httpのファイルを開いてsend requestボタンを押すことで送ることが可能
+
+![](2022-06-27-00-22-24.png)
+
 
 - DBのスキーマ定義変更
 
