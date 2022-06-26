@@ -4,6 +4,7 @@ import { Controller, Param, Body, Get, Post, Put, Delete, HttpCode } from 'routi
 
 import { HttpException } from '../../utils/HttpException';
 import { isEmpty } from '../../utils/util';
+
 import { CreateUser } from './users.viewmodel';
 
 @Controller()
@@ -62,18 +63,16 @@ export class UsersController {
     if (!findUser) throw new HttpException(409, "You're not user");
 
     const hashedPassword = await hash(userData.password, 10);
-    const user: User = {
-      user_id: findUser.user_id,
-      name: userData.name,
-      email: userData.email,
-      password: hashedPassword,
-    };
 
     await this.user.update({
-      where: {
-        user_id: user.user_id,
+      data: {
+        name: userData.name,
+        email: userData.email,
+        password: hashedPassword,
       },
-      data: user,
+      where: {
+        user_id: findUser.user_id,
+      },
     });
 
     const updates = await this.user.findMany();
