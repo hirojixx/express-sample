@@ -3,6 +3,7 @@
 インターンシップ用サンプル
 
 必要と思われるVSCodeの拡張機能は拡張機能タブのワークスペースの推奨からインストール可能
+
 以下のものを設定している
 
 - vscode-eslint(TypeScriptのリンター)
@@ -26,25 +27,37 @@
 
 1. Docker及びDocker-Composeを使えるようにする
 2. npm scriptのstart:dbを実行
+
 `npm run start:db`
 
 - APIの起動
 
 1. prismaを利用してDBにマイグレーションを行う
+
 `npm run prisma:migrate`
+
 その後マイグレーションの名前を指定する必要あり
+
 はじめはinit等で
+
 その後はDBのスキーマ変更理由を名前にする
+
 2. APIを起動する
-`npm run start:dev`
-同時にブラウザが立ち上がる
+
+  `npm run start:dev`
+
+  同時にブラウザが立ち上がる
+
 3. DBを確認する
+
 `npm run prisma:studio`
+
 ブラウザが立ち上がり、DBの状態確認と更新を行うことができる
 
 - APIの実行確認
 
 VScodeの拡張機能を利用してHTTPリクエストを投げる
+
 サンプルではusers.httpのファイルを開いてsend requestボタンを押すことで送ることが可能
 
 ![](2022-06-27-00-22-24.png)
@@ -54,11 +67,15 @@ VScodeの拡張機能を利用してHTTPリクエストを投げる
 
 1. prismaフォルダ内のschema.prismaファイルを変更する
 2. DBにマイグレーションを行う
+
 `npm run prisma:migrate`
+
 変更理由を指定する
+
 場合によってはDB内部のデータが消去されることの確認がある
 
 DBの定義は以下を参照
+
 [https://www.prisma.io/docs/concepts/components/prisma-schema](https://www.prisma.io/docs/concepts/components/prisma-schema)
 
 - **model＝テーブル**と考えてよい
