@@ -18,7 +18,7 @@
       "compress": false,
       "mangle": false
     },
-    "baseUrl": "src",
+    "baseUrl": "src"
   },
   "module": {
     "type": "commonjs"

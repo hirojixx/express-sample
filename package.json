@@ -7,7 +7,7 @@
   "scripts": {
     "postinstall": "prisma generate",
     "start": "npm run build && node dist/server.js",
-    "start:dev": "nodemon",
+    "start:dev": "start http://localhost:3000/api-docs && nodemon",
     "start:db": "docker-compose up -d --build",
     "build": "swc src -d dist --source-maps --copy-files",
     "build:tsc": "tsc && tsc-alias",
