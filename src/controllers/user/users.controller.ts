@@ -2,9 +2,9 @@ import { PrismaClient, User } from '@prisma/client';
 import { hash } from 'bcrypt';
 import { Controller, Param, Body, Get, Post, Put, Delete, HttpCode } from 'routing-controllers';
 
-import { HttpException } from '../utils/HttpException';
-import { isEmpty } from '../utils/util';
-import { CreateUser } from '../viewmodels/users.viewmodel';
+import { HttpException } from '../../utils/HttpException';
+import { isEmpty } from '../../utils/util';
+import { CreateUser } from './users.viewmodel';
 
 @Controller()
 export class UsersController {

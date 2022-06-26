@@ -1,6 +1,6 @@
 import App from "./app";
 import { HealthCheckController } from "./controllers/healthCheck.controller";
-import { UsersController } from "./controllers/users.controller";
+import { UsersController } from "./controllers/user/users.controller";
 
 
 try {
