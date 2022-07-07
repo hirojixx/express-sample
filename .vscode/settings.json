@@ -6,6 +6,8 @@
   "appService.zipIgnorePattern": [
     "node_modules{,/**}",
     ".vscode{,/**}",
-    "src{,/**}"
+    "src{,/**}",
+    "prisma{,/**}",
+    "DB{,/**}"
   ]
 }
