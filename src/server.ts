@@ -1,10 +1,9 @@
 import App from "./app";
-import { HealthCheckController } from "./controllers/healthCheck.controller";
+import { HealthCheckController } from "./controllers/HealthCheck.controller";
 import { UsersController } from "./controllers/user/users.controller";
 
-
+export const app = new App([HealthCheckController, UsersController]);
 try {
-  const app = new App([HealthCheckController, UsersController]);
   app.listen();
 } catch (error) {
   console.log(error);

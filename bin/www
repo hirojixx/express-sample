@@ -1,0 +1,8 @@
+#!/usr/bin/env node
+
+try {
+  var { app } = require('../dist/server');
+  app.listen();
+} catch (error) {
+  console.log(error)
+}
