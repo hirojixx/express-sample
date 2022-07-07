@@ -28,11 +28,10 @@
     "useUnknownInCatchVariables": true,
     "exactOptionalPropertyTypes": true,
     "resolveJsonModule": true,
-    "noEmit": true,
     "importHelpers": true,
     "baseUrl": "src",
     "incremental": true
   },
   "include": ["src/**/*.ts", "src/**/*.json", ".env"],
-  "exclude": ["node_modules", "src/logs"]
+  "exclude": ["src/logs", "node_modules"]
 }

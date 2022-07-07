@@ -1,5 +1,4 @@
 import { PrismaClient, User } from '@prisma/client';
-import { hash } from 'bcrypt';
 import { Controller, Param, Body, Get, Post, Put, Delete, HttpCode } from 'routing-controllers';
 
 import { HttpException } from '../../utils/HttpException';
@@ -42,8 +41,7 @@ export class UsersController {
 
     if (findUser) throw new HttpException(409, `Your email ${userData.email} already exists`);
 
-    const hashedPassword = await hash(userData.password, 10);
-    const saveData = { name: userData.name, email: userData.email, password: hashedPassword };
+    const saveData = { name: userData.name, email: userData.email, password: userData.password };
     const saved = await this.user.create({
       data: saveData,
     });
@@ -62,13 +60,11 @@ export class UsersController {
     });
     if (!findUser) throw new HttpException(409, "You're not user");
 
-    const hashedPassword = await hash(userData.password, 10);
-
     await this.user.update({
       data: {
         name: userData.name,
         email: userData.email,
-        password: hashedPassword,
+        password: userData.password,
       },
       where: {
         user_id: findUser.user_id,
