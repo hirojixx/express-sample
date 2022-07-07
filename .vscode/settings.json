@@ -4,10 +4,12 @@
   },
   "editor.formatOnSave": false,
   "appService.zipIgnorePattern": [
-    "node_modules{,/**}",
     ".vscode{,/**}",
+    "node_modules{,/**}",
     "src{,/**}",
+    "logs{,/**}",
     "prisma{,/**}",
     "DB{,/**}"
-  ]
+  ],
+  "appService.defaultWebAppToDeploy": "None"
 }
