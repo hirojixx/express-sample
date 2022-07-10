@@ -6,17 +6,13 @@
   "license": "ISC",
   "scripts": {
     "postinstall": "prisma generate",
-    "start": "node ./bin/www",
     "start:dev": "start http://localhost:3000/ && nodemon",
     "start:db": "docker-compose up -d --build",
-    "build:dev": "swc src -d dist --source-maps --copy-files",
     "build:prod": "webpack --config ./webpack.config.js",
-    "build:tsc": "tsc && tsc-alias",
     "lint": "eslint --ignore-path .gitignore --ext .ts src/",
     "lint:fix": "npm run lint -- --fix",
     "format": "prettier --write \"**/*.+(js|json|yml|ts|tsx)\"",
     "prisma:push": "prisma db push",
-    "prisma:migrate": "prisma migrate dev",
     "prisma:studio": "prisma studio"
   },
   "dependencies": {
